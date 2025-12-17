@@ -3,116 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 Рекомендатор видеоигр - Telegram Bot</title>
+    <title>GameNight Helper - Выбор игр</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1><i class="fas fa-gamepad"></i> GameNight Helper</h1>
-            <p class="subtitle">Telegram бот для подбора видеоигр на вечер</p>
+        <!-- Шапка -->
+        <header class="header">
+            <h1 class="title">🎮 GAMESTEBOT</h1>
+            <p class="subtitle">GameNight Helper</p>
+            <p class="description">Добро пожаловать! Я помогу вам выбрать идеальную игру на сегодняшний вечер</p>
         </header>
 
-        <div class="bot-info">
-            <div class="avatar">
-                <img src="images/bibaboba.jpg" alt="Аватар бота" id="botAvatar">
-            </div>
-            <div class="info-text">
-                <h2>🎮 Добро пожаловать!</h2>
-                <p>Я помогу вам выбрать идеальную игру на сегодняшний вечер</p>
-            </div>
-        </div>
-
-        <div class="selection-section">
-            <h3><i class="fas fa-sliders-h"></i> Настройки выбора</h3>
-            
+        <!-- Настройки -->
+        <div class="settings-card">
+            <h2>Настройки выбора</h2>
             <div class="selected-info">
-                <h4><i class="fas fa-check-circle"></i> Выбранные параметры</h4>
-                <p>Жанры: <span id="selected-genres-count">0</span></p>
-                <p>Режим игры: <span id="selected-mode">Не выбран</span></p>
-                
-                <div class="selected-tags" id="selected-tags-container">
-                    <!-- Выбранные жанры будут появляться здесь -->
+                <p><strong>Выбранные параметры</strong></p>
+                <div class="selected-item">
+                    <span>Жанры:</span>
+                    <span id="selected-count" class="count">0</span>
                 </div>
-            </div>
-            
-            <div class="section-title">
-                <i class="fas fa-film"></i> Выбери жанры игр
-            </div>
-            <div class="genres-container" id="genres-container">
-                <!-- Кнопки жанров будут добавлены через JavaScript -->
-            </div>
-            
-            <div class="section-title">
-                <i class="fas fa-users"></i> Выбери режим игры
-            </div>
-            <div class="mode-container">
-                <div class="mode-btn" data-mode="single">
-                    <i class="fas fa-user"></i> Синглплеер
-                </div>
-                <div class="mode-btn" data-mode="multi">
-                    <i class="fas fa-users"></i> Мультиплеер
-                </div>
-                <div class="mode-btn" data-mode="both">
-                    <i class="fas fa-random"></i> Оба варианта
-                </div>
-            </div>
-            
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-value" id="total-games">30</div>
-                    <div class="stat-label">Всего игр в базе</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="found-games">0</div>
-                    <div class="stat-label">Найдено игр</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="selected-count">0</div>
-                    <div class="stat-label">Выбрано жанров</div>
+                <div class="selected-item">
+                    <span>Режим игры:</span>
+                    <span id="game-mode" class="mode">Не выбран</span>
                 </div>
             </div>
         </div>
 
-        <div class="control-buttons">
-            <button class="control-btn quick-pick-btn" id="quick-pick">
-                <i class="fas fa-magic"></i> Подбор на вечер
-            </button>
-            <button class="control-btn popular-btn" id="popular-games">
-                <i class="fas fa-fire"></i> Популярные игры
-            </button>
-            <button class="control-btn find-btn" id="find-games">
-                <i class="fas fa-search"></i> Найти игры
-            </button>
-            <button class="control-btn reset-btn" id="reset-selection">
-                <i class="fas fa-redo"></i> Сбросить
-            </button>
-        </div>
-
-        <div class="response-area">
-            <h3><i class="fas fa-comment-dots"></i> Советы бота:</h3>
-            <div class="response-box" id="responseBox">
-                <p>Выберите жанры и режим игры, чтобы получить рекомендации...</p>
+        <!-- Выбор жанров -->
+        <div class="genres-card">
+            <h2>Выбери жанры игр</h2>
+            <div class="genres-grid" id="genres-grid">
+                <!-- Жанры загружаются через JS -->
             </div>
         </div>
 
-        <div class="results-section">
-            <h3><i class="fas fa-list-ul"></i> Рекомендованные игры</h3>
-            <div class="results-container" id="results-container">
-                <div class="no-results" id="no-results">
-                    <i class="fas fa-gamepad"></i>
-                    <p>Выберите жанры и режим игры, затем нажмите "Найти игры"</p>
-                </div>
-                <!-- Результаты поиска будут появляться здесь -->
+        <!-- Режим игры -->
+        <div class="mode-card">
+            <h2>Режим игры</h2>
+            <div class="mode-buttons">
+                <button class="mode-btn" data-mode="single">🎮 Соло</button>
+                <button class="mode-btn" data-mode="multi">👥 Мультиплеер</button>
+                <button class="mode-btn" data-mode="coop">🤝 Кооператив</button>
             </div>
         </div>
 
-        <footer>
-            <p>🎮 GameNight Helper - Telegram бот для подбора игр</p>
-            <p>Лабораторная работа №6. Создание интерфейса для Telegram бота</p>
-            <p class="status">Статус: <span id="statusText">Рекомендатор активен</span></p>
-        </footer>
+        <!-- Кнопка готово -->
+        <button class="done-btn" id="done-btn" disabled>
+            <span class="btn-text">🎯 Найти игру!</span>
+            <span class="btn-count">(0)</span>
+        </button>
+
+        <!-- Результаты -->
+        <div class="results-card" id="results" style="display: none;">
+            <h2>🎉 Подходящие игры</h2>
+            <div class="games-list" id="games-list">
+                <!-- Игры появятся здесь -->
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
