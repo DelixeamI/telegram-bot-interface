@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot Interface</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-robot"></i> Мой Чат-Бот</h1>
+            <p class="subtitle">Умный помощник для решения ваших задач</p>
+        </header>
+
+        <div class="bot-info">
+            <div class="avatar">
+                <img src="images/bot-avatar.png" alt="Аватар бота" id="botAvatar">
+            </div>
+            <div class="info-text">
+                <h2>Добро пожаловать!</h2>
+                <p>Я ваш персональный помощник. Выберите действие:</p>
+            </div>
+        </div>
+
+        <div class="buttons-container">
+            <button class="btn" id="btnHelp">
+                <i class="fas fa-question-circle"></i> Помощь
+            </button>
+            <button class="btn" id="btnWeather">
+                <i class="fas fa-cloud-sun"></i> Погода
+            </button>
+            <button class="btn" id="btnNews">
+                <i class="fas fa-newspaper"></i> Новости
+            </button>
+            <button class="btn" id="btnCalc">
+                <i class="fas fa-calculator"></i> Калькулятор
+            </button>
+            <button class="btn" id="btnJoke">
+                <i class="fas fa-laugh"></i> Шутка
+            </button>
+            <button class="btn" id="btnSettings">
+                <i class="fas fa-cog"></i> Настройки
+            </button>
+        </div>
+
+        <div class="response-area">
+            <h3><i class="fas fa-comment-dots"></i> Ответ бота:</h3>
+            <div class="response-box" id="responseBox">
+                <p>Нажмите на кнопку выше, чтобы увидеть ответ бота...</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Лабораторная работа №6. Создание интерфейса для Telegram бота</p>
+            <p class="status">Статус: <span id="statusText">Бот онлайн</span></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
